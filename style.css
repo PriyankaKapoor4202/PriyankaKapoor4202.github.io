@@ -51,6 +51,16 @@ h2 {
     box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
 }
 
+.contact {
+    color: #444;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.contact a {
+    color: #0A66C2;
+    text-decoration: none;
+}
+
 footer {
     margin-top: 40px;
     color: #777;
