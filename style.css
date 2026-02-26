@@ -96,4 +96,11 @@ footer {
     margin: 14px auto 0 auto;
     line-height: 1.6;
 }
+.project h4 a {
+  text-decoration: none;
+}
+
+.project h4 a:hover {
+  text-decoration: underline;
+}
 
