@@ -81,3 +81,14 @@ footer {
     margin-top: 40px;
     color: #777;
 }
+.launch-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 6px;
+}
+
+.project p {
+    margin-top: 12px;   /* gives spacing under title */
+    clear: both;        /* ensures no side wrapping */
+}
