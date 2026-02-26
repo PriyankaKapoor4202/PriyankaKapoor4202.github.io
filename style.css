@@ -60,6 +60,20 @@ h2 {
     color: #0A66C2;
     text-decoration: none;
 }
+.launch-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 16px;
+    background-color: #1f77b4;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.launch-btn:hover {
+    background-color: #155d8a;
+}
 
 footer {
     margin-top: 40px;
