@@ -61,14 +61,16 @@ h2 {
     text-decoration: none;
 }
 .launch-btn {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 16px;
+    display: block;              /* makes it go to its own line */
+    width: fit-content;
+    margin: 20px auto 0 auto;    /* centers it */
+    padding: 12px 22px;
     background-color: #1f77b4;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: bold;
+    text-align: center;
 }
 
 .launch-btn:hover {
