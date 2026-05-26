@@ -3,287 +3,746 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Priyanka Kapoor | Product Analytics</title>
-  <link rel="stylesheet" href="style.css?v=7" />
+  <title>Priyanka Kapoor | AI Engineer & Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --navy: #0a1628;
+      --navy-light: #112240;
+      --blue: #2563eb;
+      --blue-light: #3b82f6;
+      --accent: #6366f1;
+      --green: #10b981;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --bg-soft: #f8fafc;
+    }
+
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 40px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1rem; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue); color: white;
+      padding: 8px 20px; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #1d4ed8; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(99,102,241,0.15) 0%, transparent 70%),
+                  radial-gradient(ellipse at 20% 80%, rgba(37,99,235,0.1) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 0.72rem; font-weight: 600; color: #a5b4fc;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
+    .hero h1 {
+      font-size: 3.2rem; font-weight: 900; color: #f1f5f9;
+      letter-spacing: -1px; line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #818cf8; }
+    .hero-desc {
+      font-size: 1rem; color: #94a3b8;
+      line-height: 1.75; margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-primary {
+      background: var(--blue); color: white;
+      padding: 12px 24px; border-radius: 10px;
+      font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e2e8f0; padding: 12px 24px; border-radius: 10px;
+      font-size: 0.88rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+    .hero-stats { display: flex; gap: 32px; }
+    .hero-stat-val { font-size: 1.6rem; font-weight: 800; color: #f1f5f9; line-height: 1; }
+    .hero-stat-lbl { font-size: 0.72rem; color: #64748b; margin-top: 4px; }
+    .hero-right { display: flex; flex-direction: column; gap: 14px; }
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 18px 20px;
+      transition: all 0.2s;
+    }
+    .hero-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(99,102,241,0.4);
+      transform: translateX(4px);
+    }
+    .hero-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .hero-card-name { font-size: 0.88rem; font-weight: 700; color: #e2e8f0; }
+    .hero-card-tag {
+      font-size: 0.65rem; font-weight: 600; padding: 3px 8px;
+      border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .tag-health { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+    .tag-fintech { background: rgba(99,102,241,0.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); }
+    .tag-devops { background: rgba(251,146,60,0.15); color: #fb923c; border: 1px solid rgba(251,146,60,0.3); }
+    .hero-card-desc { font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px; }
+    .hero-card-link {
+      font-size: 0.72rem; font-weight: 600; color: #818cf8;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+    }
+    .hero-card-link:hover { color: #a5b4fc; }
+
+    /* SECTIONS */
+    section { padding: 96px 40px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; color: var(--blue);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 2rem; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.4px; margin-bottom: 12px;
+    }
+    .section-desc { font-size: 0.95rem; color: var(--text-secondary); max-width: 560px; margin-bottom: 48px; }
+
+    /* PROJECTS */
+    .projects { background: var(--bg-soft); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .project-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.25s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .project-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(37,99,235,0.12);
+    }
+    .project-card-top {
+      height: 6px;
+    }
+    .project-card-top.health { background: linear-gradient(90deg, #10b981, #34d399); }
+    .project-card-top.fintech { background: linear-gradient(90deg, #6366f1, #818cf8); }
+    .project-card-top.devops { background: linear-gradient(90deg, #f97316, #fb923c); }
+    .project-card-body { padding: 24px; }
+    .project-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+    .project-card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .project-card-icon.health { background: #ecfdf5; }
+    .project-card-icon.fintech { background: #eef2ff; }
+    .project-card-icon.devops { background: #fff7ed; }
+    .project-live {
+      display: flex; align-items: center; gap: 5px;
+      background: #f0fdf4; border: 1px solid #bbf7d0;
+      border-radius: 20px; padding: 3px 10px;
+      font-size: 0.65rem; font-weight: 600; color: #15803d;
+    }
+    .live-dot { width: 5px; height: 5px; background: #22c55e; border-radius: 50%; }
+    .project-name { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+    .project-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 16px; }
+    .project-metrics { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+    .project-metric {
+      background: var(--bg-soft); border: 1px solid var(--border);
+      border-radius: 6px; padding: 4px 10px;
+      font-size: 0.7rem; color: var(--text-secondary); font-weight: 500;
+    }
+    .project-metric strong { color: var(--navy); }
+    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+    .project-tag {
+      background: var(--bg-soft); border: 1px solid var(--border);
+      border-radius: 4px; padding: 3px 8px;
+      font-size: 0.65rem; color: var(--text-muted); font-weight: 500;
+    }
+    .project-links { display: flex; gap: 10px; }
+    .project-link-demo {
+      background: var(--blue); color: white;
+      padding: 8px 16px; border-radius: 8px;
+      font-size: 0.78rem; font-weight: 600;
+      text-decoration: none; transition: background 0.2s;
+      flex: 1; text-align: center;
+    }
+    .project-link-demo:hover { background: #1d4ed8; }
+    .project-link-code {
+      background: var(--bg-soft); border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 8px 16px; border-radius: 8px;
+      font-size: 0.78rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .project-link-code:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-story { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
+    .about-story p { margin-bottom: 16px; }
+    .about-story strong { color: var(--navy); }
+    .about-highlights { display: flex; flex-direction: column; gap: 16px; }
+    .highlight-card {
+      background: var(--bg-soft); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 18px 20px;
+      transition: all 0.2s;
+    }
+    .highlight-card:hover { border-color: var(--blue); }
+    .highlight-card-title { font-size: 0.85rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .highlight-card-sub { font-size: 0.78rem; color: var(--text-secondary); }
+    .highlight-card-link { font-size: 0.75rem; color: var(--blue); text-decoration: none; margin-top: 6px; display: inline-block; }
+
+    /* SKILLS */
+    .skills { background: var(--navy); }
+    .skills .section-title { color: #f1f5f9; }
+    .skills .section-label { color: #818cf8; }
+    .skills .section-desc { color: #94a3b8; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .skill-group {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 20px;
+    }
+    .skill-group-title {
+      font-size: 0.7rem; font-weight: 700; color: #818cf8;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      margin-bottom: 12px;
+    }
+    .skill-items { display: flex; flex-direction: column; gap: 6px; }
+    .skill-item { font-size: 0.8rem; color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+    .skill-item::before { content: ''; width: 4px; height: 4px; background: #6366f1; border-radius: 50%; flex-shrink: 0; }
+
+    /* EXPERIENCE */
+    .experience-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 40px; padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-period { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; padding-top: 4px; }
+    .exp-company { font-size: 0.7rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .exp-role { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .exp-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+    .exp-metrics { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .exp-metric {
+      background: #eff6ff; border: 1px solid #bfdbfe;
+      border-radius: 6px; padding: 3px 10px;
+      font-size: 0.7rem; color: #1d4ed8; font-weight: 600;
+    }
+
+    /* RESEARCH */
+    .research { background: var(--bg-soft); }
+    .research-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      max-width: 700px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .research-card-tag {
+      display: inline-block;
+      background: #eff6ff; border: 1px solid #bfdbfe;
+      border-radius: 4px; padding: 3px 10px;
+      font-size: 0.68rem; font-weight: 600; color: #1d4ed8;
+      margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .research-card-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
+    .research-card-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+    .research-card-meta { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 16px; }
+    .research-link {
+      background: var(--blue); color: white;
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; display: inline-block;
+      transition: background 0.2s;
+    }
+    .research-link:hover { background: #1d4ed8; }
+
+    /* CONTACT */
+    .contact { background: var(--navy); text-align: center; }
+    .contact .section-title { color: #f1f5f9; }
+    .contact .section-label { color: #818cf8; }
+    .contact-desc { font-size: 1rem; color: #94a3b8; max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+    .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .contact-link {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e2e8f0; padding: 12px 24px; border-radius: 10px;
+      font-size: 0.85rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .contact-link:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }
+    .contact-link.primary { background: var(--blue); border-color: var(--blue); font-weight: 600; }
+    .contact-link.primary:hover { background: #1d4ed8; }
+
+    /* FOOTER */
+    footer {
+      background: #060d1a;
+      padding: 24px 40px;
+      text-align: center;
+      font-size: 0.75rem; color: #334155;
+    }
+    footer strong { color: #475569; }
+    footer a { color: #475569; text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 8px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .hero { padding: 100px 20px 60px; }
+    }
+  </style>
 </head>
-
 <body>
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <div class="brand">PK</div>
-        <div class="navlinks">
-          <a href="#work">Work</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Priyanka <span>Kapoor</span></div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#research">Research</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="mailto:priyankakapoor4202@gmail.com" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-dot"></span>
+        Open to Work
+      </div>
+      <h1>Building AI that<br><span>actually works.</span></h1>
+      <p class="hero-desc">
+        I am a Business Analytics graduate who builds and ships AI agents, analytics systems, and data tools. Three live deployed applications. One published research paper. Four years of real industry experience.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View Live Projects</a>
+        <a href="https://www.linkedin.com/in/priyanka-kapoor01/" target="_blank" class="btn-ghost">LinkedIn</a>
+        <a href="https://github.com/PriyankaKapoor4202" target="_blank" class="btn-ghost">GitHub</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-val">3</div>
+          <div class="hero-stat-lbl">Live AI Apps</div>
         </div>
-      </nav>
-
-      <section class="hero">
-        <div class="hero-text">
-          <h1>Priyanka Kapoor</h1>
-          <p class="headline">
-            Product Analytics • Growth Analytics • Business Analysis
-          </p>
-
-          <p class="subhead">
-            I build decision-ready analytics products that help teams improve acquisition, activation, retention, and revenue.
-            My work focuses on KPI design, automation, and dashboards that reduce manual effort and accelerate decisions.
-          </p>
-
-          <div class="meta">
-            <a class="link" href="mailto:priyankakapoor4202@gmail.com">priyankakapoor4202@gmail.com</a>
-            <span class="dot">•</span>
-            <span>United States</span>
-          </div>
-
-          <div class="cta-row">
-            <a class="btn btn-primary" href="https://priyankakapoor4202.github.io/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/priyanka-kapoor01/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a class="btn btn-ghost" href="https://github.com/PriyankaKapoor4202" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
-
-          <div class="trust">
-            <div class="pill">Dashboards</div>
-            <div class="pill">Experimentation</div>
-            <div class="pill">Automation</div>
-            <div class="pill">KPI Frameworks</div>
-          </div>
+        <div>
+          <div class="hero-stat-val">83+</div>
+          <div class="hero-stat-lbl">Applications Sent</div>
         </div>
-
-        <div class="hero-card">
-          <div class="hero-card-top">
-            <div>
-              <div class="kicker">Now featuring</div>
-              <div class="card-title">Growth Funnel Lab</div>
-              <div class="card-subtitle">Live Streamlit App</div>
-            </div>
-            <div class="badge">Live</div>
-          </div>
-
-          <div class="hero-metrics">
-            <div class="metric">
-              <div class="metric-label">Focus</div>
-              <div class="metric-value">Conversion drop-offs</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Outputs</div>
-              <div class="metric-value">Funnel rates, insights</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Tools</div>
-              <div class="metric-value">Python, Streamlit, Plotly</div>
-            </div>
-          </div>
-
-          <a class="btn btn-primary btn-wide" href="https://growth-funnel-lab-jxpn8kztjb7xzqvzx2ncax.streamlit.app/" target="_blank" rel="noopener noreferrer">
-            View Live App
-          </a>
-
-          <p class="hero-note">
-            Designed to be recruiter-friendly: self-serve dataset upload, instant charts, and decision-ready summary outputs.
-          </p>
+        <div>
+          <div class="hero-stat-val">4+</div>
+          <div class="hero-stat-lbl">Years Experience</div>
         </div>
-      </section>
+        <div>
+          <div class="hero-stat-val">1</div>
+          <div class="hero-stat-lbl">Published Paper</div>
+        </div>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <section id="work" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Featured Work</h2>
-          <p>Apps and analytics products that reflect how I think as a Product and Growth Analyst.</p>
+    <div class="hero-right">
+      <a href="https://breast-cancer-detection-ai-wnn9lf9wtmywjaeuhckuv9.streamlit.app" target="_blank" class="hero-card" style="text-decoration:none">
+        <div class="hero-card-top">
+          <div class="hero-card-name">MedScan AI</div>
+          <span class="hero-card-tag tag-health">Healthcare</span>
         </div>
+        <div class="hero-card-desc">Breast cancer detection — 96.5% accuracy, AUC-ROC 0.995</div>
+        <div class="hero-card-link">View Live Demo →</div>
+      </a>
+      <a href="https://agentic-marketing-analytics-lq78mplj3t5qf3c5afebph.streamlit.app" target="_blank" class="hero-card" style="text-decoration:none">
+        <div class="hero-card-top">
+          <div class="hero-card-name">NexPay Analytics</div>
+          <span class="hero-card-tag tag-fintech">Fintech</span>
+        </div>
+        <div class="hero-card-desc">Payments intelligence platform — 100K transactions, AI agent</div>
+        <div class="hero-card-link">View Live Demo →</div>
+      </a>
+      <a href="https://pipeline-failure-agent-8hrfv9pmzwy3qe4aynye2k.streamlit.app" target="_blank" class="hero-card" style="text-decoration:none">
+        <div class="hero-card-top">
+          <div class="hero-card-name">LogTrace</div>
+          <span class="hero-card-tag tag-devops">Data Engineering</span>
+        </div>
+        <div class="hero-card-desc">AI pipeline diagnosis — root cause, upstream check, code fix</div>
+        <div class="hero-card-link">View Live Demo →</div>
+      </a>
+    </div>
+  </div>
+</section>
 
-        <div class="grid">
-          <!-- 1) Live -->
-          <article class="card">
-            <div class="card-head">
-              <h3>Growth Funnel Lab</h3>
-              <span class="badge soft">Live</span>
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-label">Live Projects</div>
+    <div class="section-title">Three deployed AI applications.</div>
+    <div class="section-desc">Not tutorials. Not Kaggle notebooks. Real tools deployed publicly that anyone can open and use right now.</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-card-top health"></div>
+        <div class="project-card-body">
+          <div class="project-card-header">
+            <div class="project-card-icon health">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
             </div>
-
-            <p class="card-text">
-              Interactive product funnel analysis to identify drop-offs, quantify channel performance, and estimate impact from improving conversion.
-            </p>
-
-            <div class="mini-grid">
-              <div class="mini">
-                <div class="mini-label">Focus</div>
-                <div class="mini-value">Acquisition, Activation, Conversion</div>
-              </div>
-              <div class="mini">
-                <div class="mini-label">Outputs</div>
-                <div class="mini-value">Funnel rates, channel view, insights</div>
-              </div>
-              <div class="mini">
-                <div class="mini-label">Tools</div>
-                <div class="mini-value">Python, Streamlit, Plotly</div>
-              </div>
-            </div>
-
-            <div class="card-actions">
-              <a class="btn btn-primary" href="https://growth-funnel-lab-jxpn8kztjb7xzqvzx2ncax.streamlit.app/" target="_blank" rel="noopener noreferrer">View Live App</a>
-              <a class="btn btn-ghost" href="https://github.com/PriyankaKapoor4202" target="_blank" rel="noopener noreferrer">Code</a>
-            </div>
-          </article>
-
-          <!-- 2) App you will deploy next -->
-          <article class="card">
-            <div class="card-head">
-              <h3>Retention Cohort Explorer</h3>
-              <span class="badge soft2">App</span>
-            </div>
-
-            <p class="card-text">
-              Cohort retention and activation dashboard with upload support, segment filters, and a narrative summary for stakeholder updates.
-            </p>
-
-            <div class="mini-grid">
-              <div class="mini">
-                <div class="mini-label">Focus</div>
-                <div class="mini-value">Retention, Engagement, Activation</div>
-              </div>
-              <div class="mini">
-                <div class="mini-label">Outputs</div>
-                <div class="mini-value">Cohort heatmap, KPI trends, summary</div>
-              </div>
-              <div class="mini">
-                <div class="mini-label">Tools</div>
-                <div class="mini-value">Python, Streamlit, Pandas</div>
-              </div>
-            </div>
-
-            <div class="card-actions">
-              <!-- Update these two links after you deploy -->
-              <a class="btn btn-primary" href="#" aria-disabled="true">Deploy and add live link</a>
-              <a class="btn btn-ghost" href="#" aria-disabled="true">Add GitHub repo</a>
-            </div>
-
-            <p class="hint">I included ready-to-run Streamlit code for this below.</p>
-          </article>
-
-          <!-- 3) App you will deploy next -->
-          <article class="card">
-            <div class="card-head">
-              <h3>Experiment Impact Studio</h3>
-              <span class="badge soft3">App</span>
-            </div>
-
-            <p class="card-text">
-              A/B test and KPI impact analyzer with uplift estimates, guardrails, and a clean executive summary you can paste into email or a doc.
-            </p>
-
-            <div class="mini-grid">
-              <div class="mini">
-                <div class="mini-label">Focus</div>
-                <div class="mini-value">Experimentation, Metrics, Decisioning</div>
-              </div>
-              <div class="mini">
-                <div class="mini-label">Outputs</div>
-                <div class="mini-value">Uplift, confidence, summary narrative</div>
-              </div>
-              <div class="mini">
-                <div class="mini-label">Tools</div>
-                <div class="mini-value">Python, Streamlit, SciPy</div>
-              </div>
-            </div>
-
-            <div class="card-actions">
-              <!-- Update these two links after you deploy -->
-              <a class="btn btn-primary" href="#" aria-disabled="true">Deploy and add live link</a>
-              <a class="btn btn-ghost" href="#" aria-disabled="true">Add GitHub repo</a>
-            </div>
-
-            <p class="hint">I included ready-to-run Streamlit code for this below.</p>
-          </article>
+            <div class="project-live"><span class="live-dot"></span>Live</div>
+          </div>
+          <div class="project-name">MedScan AI</div>
+          <div class="project-desc">Breast cancer malignancy detection using ensemble machine learning. Trained on the Wisconsin Breast Cancer Dataset with clinical tumor measurements as input.</div>
+          <div class="project-metrics">
+            <div class="project-metric"><strong>96.5%</strong> Accuracy</div>
+            <div class="project-metric"><strong>0.995</strong> AUC-ROC</div>
+            <div class="project-metric"><strong>569</strong> Records</div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Scikit-learn</span>
+            <span class="project-tag">XGBoost</span>
+            <span class="project-tag">Streamlit</span>
+          </div>
+          <div class="project-links">
+            <a href="https://breast-cancer-detection-ai-wnn9lf9wtmywjaeuhckuv9.streamlit.app" target="_blank" class="project-link-demo">Live Demo</a>
+            <a href="https://github.com/PriyankaKapoor4202/Breast-Cancer-Detection-AI" target="_blank" class="project-link-code">GitHub</a>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section id="skills" class="section alt">
-      <div class="container">
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>What I use to build analytics products end to end.</p>
-        </div>
-
-        <div class="chips">
-          <span class="chip">SQL</span>
-          <span class="chip">Python</span>
-          <span class="chip">Streamlit</span>
-          <span class="chip">Tableau</span>
-          <span class="chip">Power BI</span>
-          <span class="chip">ETL Pipelines</span>
-          <span class="chip">Airflow</span>
-          <span class="chip">Databricks</span>
-          <span class="chip">Snowflake</span>
-          <span class="chip">Experimentation</span>
-          <span class="chip">KPI Frameworks</span>
-          <span class="chip">Automation</span>
+      <div class="project-card">
+        <div class="project-card-top fintech"></div>
+        <div class="project-card-body">
+          <div class="project-card-header">
+            <div class="project-card-icon fintech">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2">
+                <rect x="1" y="4" width="22" height="16" rx="2"/>
+                <line x1="1" y1="10" x2="23" y2="10"/>
+              </svg>
+            </div>
+            <div class="project-live"><span class="live-dot"></span>Live</div>
+          </div>
+          <div class="project-name">NexPay Analytics</div>
+          <div class="project-desc">Payments intelligence platform with an AI agent powered by Groq LLaMA3. Ask natural language questions about 100,000 fintech transactions and get instant insights.</div>
+          <div class="project-metrics">
+            <div class="project-metric"><strong>100K</strong> Transactions</div>
+            <div class="project-metric"><strong>50K</strong> Customers</div>
+            <div class="project-metric"><strong>2s</strong> Response</div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Groq LLaMA3</span>
+            <span class="project-tag">Plotly</span>
+            <span class="project-tag">Streamlit</span>
+          </div>
+          <div class="project-links">
+            <a href="https://agentic-marketing-analytics-lq78mplj3t5qf3c5afebph.streamlit.app" target="_blank" class="project-link-demo">Live Demo</a>
+            <a href="https://github.com/PriyankaKapoor4202/NexPay-Analytics" target="_blank" class="project-link-code">GitHub</a>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section id="experience" class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Experience Snapshot</h2>
-          <p>Highlights that map to product analytics and automation.</p>
+      <div class="project-card">
+        <div class="project-card-top devops"></div>
+        <div class="project-card-body">
+          <div class="project-card-header">
+            <div class="project-card-icon devops">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <div class="project-live"><span class="live-dot"></span>Live</div>
+          </div>
+          <div class="project-name">LogTrace</div>
+          <div class="project-desc">Agentic pipeline failure diagnosis system. Paste any error log — LogTrace identifies root cause, checks upstream systems, and generates a production-ready code fix.</div>
+          <div class="project-metrics">
+            <div class="project-metric"><strong>7</strong> Error Types</div>
+            <div class="project-metric"><strong>91%</strong> Confidence</div>
+            <div class="project-metric"><strong>5s</strong> Diagnosis</div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Groq LLaMA3</span>
+            <span class="project-tag">Regex</span>
+            <span class="project-tag">Streamlit</span>
+          </div>
+          <div class="project-links">
+            <a href="https://pipeline-failure-agent-8hrfv9pmzwy3qe4aynye2k.streamlit.app" target="_blank" class="project-link-demo">Live Demo</a>
+            <a href="https://github.com/PriyankaKapoor4202/LogTrace" target="_blank" class="project-link-code">GitHub</a>
+          </div>
         </div>
-
-        <div class="timeline">
-          <div class="t-item">
-            <div class="t-role">Assistant Data Analyst, Omnicom Media Group</div>
-            <div class="t-note">Automated leadership reporting and built ETL pipelines and dashboards.</div>
-          </div>
-
-          <div class="t-item">
-            <div class="t-role">Graduate Assistant, University Analytics, Montclair State University</div>
-            <div class="t-note">Maintained SQL pipelines powering Tableau dashboards and improved KPI reporting in Power BI.</div>
-          </div>
-
-          <div class="t-item">
-            <div class="t-role">Senior Marketing Data Analyst, Meesho</div>
-            <div class="t-note">Standardized multi-source data and built KPI tracking solutions for faster stakeholder decision-making.</div>
-          </div>
-
-          <div class="t-item">
-            <div class="t-role">Senior Analyst, Merchandising, Lenskart</div>
-            <div class="t-note">Used SQL and Python funnel analysis to improve conversion outcomes and migrated Excel workflows to automation.</div>
-          </div>
-        </div>
-
-        <p class="smallprint">Full details available on the resume link above. :contentReference[oaicite:1]{index=1}</p>
       </div>
-    </section>
 
-    <section id="contact" class="section alt">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Best way to reach me for product analytics, growth analytics, and data roles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About</div>
+        <div class="section-title">The person behind the projects.</div>
+        <div class="about-story">
+          <p>I started with a mammography dataset — actual diagnostic scans from real patients. That context changed everything about how I approach data. A model that is 96% accurate but misses malignant cases is not impressive. It is dangerous. That reframing shapes everything I build.</p>
+          <p>At <strong>OMG23</strong>, I worked directly with the Disney client on campaign analytics. I automated reporting workflows that eliminated hours of manual work daily — and leadership adopted the system as the team standard.</p>
+          <p>At <strong>Meesho</strong>, one of India's largest e-commerce platforms, I owned analytics for $2M+ in quarterly ad spend and presented performance insights directly to senior leadership.</p>
+          <p>I am a <strong>Business Analytics graduate from Montclair State University</strong> and I am actively building AI agents that make data useful — not just impressive in a demo.</p>
         </div>
-
-        <div class="contact-card">
-          <div>
-            <div class="contact-label">Email</div>
-            <a class="contact-value" href="mailto:priyankakapoor4202@gmail.com">priyankakapoor4202@gmail.com</a>
-          </div>
-
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:priyankakapoor4202@gmail.com">Email Me</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/priyanka-kapoor01/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </div>
-
-        <footer class="footer">
-          <div>© 2026 Priyanka Kapoor</div>
-        </footer>
       </div>
-    </section>
-  </main>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="highlight-card-title">MS Business Analytics</div>
+          <div class="highlight-card-sub">Montclair State University, New Jersey — 2026</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card-title">F-1 STEM OPT</div>
+          <div class="highlight-card-sub">Fully authorized to work in the US. Open to relocating anywhere.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card-title">Published Researcher</div>
+          <div class="highlight-card-sub">AI and mental health — SSRN Working Paper, 2026</div>
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6669899" target="_blank" class="highlight-card-link">Read Paper →</a>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card-title">Open to Work</div>
+          <div class="highlight-card-sub">Data Analyst, Analytics Engineer, AI Analyst roles across the US</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <div class="section-title">What I build with.</div>
+    <div class="section-desc" style="margin-bottom:40px">Four years of tools across analytics, engineering, and AI.</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">AI and Agents</div>
+        <div class="skill-items">
+          <div class="skill-item">Claude API</div>
+          <div class="skill-item">Groq API</div>
+          <div class="skill-item">LangChain</div>
+          <div class="skill-item">MCP</div>
+          <div class="skill-item">Prompt Engineering</div>
+          <div class="skill-item">RAG</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data and Analytics</div>
+        <div class="skill-items">
+          <div class="skill-item">SQL</div>
+          <div class="skill-item">Python</div>
+          <div class="skill-item">R</div>
+          <div class="skill-item">Pandas</div>
+          <div class="skill-item">Scikit-learn</div>
+          <div class="skill-item">XGBoost</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Visualization</div>
+        <div class="skill-items">
+          <div class="skill-item">Tableau</div>
+          <div class="skill-item">Power BI</div>
+          <div class="skill-item">Streamlit</div>
+          <div class="skill-item">Plotly</div>
+          <div class="skill-item">GA4</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Engineering</div>
+        <div class="skill-items">
+          <div class="skill-item">ETL Pipelines</div>
+          <div class="skill-item">Snowflake</div>
+          <div class="skill-item">Databricks</div>
+          <div class="skill-item">Apache Airflow</div>
+          <div class="skill-item">Azure</div>
+          <div class="skill-item">Power Automate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <div class="section-title">Where I have worked.</div>
+    <div class="experience-list">
+
+      <div class="exp-item">
+        <div class="exp-period">Jun 2025 — Aug 2025</div>
+        <div>
+          <div class="exp-company">OMG23 — Omnicom Media Group</div>
+          <div class="exp-role">Data Analyst Intern</div>
+          <div class="exp-desc">Worked directly with the Disney client on campaign analytics. Built 4+ ETL pipelines that automated daily reporting across 6 ad platforms, eliminating all manual work and enabling real-time decision making.</div>
+          <div class="exp-metrics">
+            <span class="exp-metric">100% tool elimination</span>
+            <span class="exp-metric">$75 saved per user</span>
+            <span class="exp-metric">99%+ accuracy</span>
+            <span class="exp-metric">1 day faster decisions</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">Aug 2024 — Jun 2025</div>
+        <div>
+          <div class="exp-company">Montclair State University</div>
+          <div class="exp-role">Data Analyst, University Analytics</div>
+          <div class="exp-desc">Built predictive enrollment models and executive dashboards for MBA and MSBA programs. Standardized 3+ reporting pipelines and led GA4 migration replacing Excel tracking.</div>
+          <div class="exp-metrics">
+            <span class="exp-metric">60% planning efficiency</span>
+            <span class="exp-metric">50% faster decisions</span>
+            <span class="exp-metric">80% data accessibility</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">May 2022 — Aug 2024</div>
+        <div>
+          <div class="exp-company">Meesho</div>
+          <div class="exp-role">Senior Marketing Data Analyst</div>
+          <div class="exp-desc">Owned analytics infrastructure for $2M+ in quarterly ad spend across Salesforce, HubSpot, and Meta Ads. Presented performance insights directly to senior leadership to inform budget allocation.</div>
+          <div class="exp-metrics">
+            <span class="exp-metric">40 hrs saved per quarter</span>
+            <span class="exp-metric">35% error reduction</span>
+            <span class="exp-metric">20% conversion improvement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">Sep 2021 — Apr 2022</div>
+        <div>
+          <div class="exp-company">Lenskart</div>
+          <div class="exp-role">Senior Analyst, Merchandising</div>
+          <div class="exp-desc">Demand forecasting and automated replenishment across 50+ SKUs. Reduced forecast errors by 80% and improved delivery speed by 30%.</div>
+          <div class="exp-metrics">
+            <span class="exp-metric">80% fewer forecast errors</span>
+            <span class="exp-metric">30% faster delivery</span>
+            <span class="exp-metric">7% AOV lift</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research" id="research">
+  <div class="container">
+    <div class="section-label">Research</div>
+    <div class="section-title">Published work.</div>
+    <div class="research-card">
+      <div class="research-card-tag">SSRN Working Paper 2026</div>
+      <div class="research-card-title">Cognitive Offloading and the Erosion of Authentic Self-Reflection in AI-Assisted Mental Health Practices</div>
+      <div class="research-card-desc">This paper examines how AI tools in mental health contexts risk replacing genuine human introspection with algorithmically mediated responses, and what that means for the authenticity of therapeutic outcomes.</div>
+      <div class="research-card-meta">Kapoor, P. — SSRN Working Paper, 2026</div>
+      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6669899" target="_blank" class="research-link">Read on SSRN</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <div class="section-title">Let's connect.</div>
+    <div class="contact-desc">I am actively looking for Data Analyst, Analytics Engineer, and AI Analyst roles across the US. Open to relocating anywhere.</div>
+    <div class="contact-links">
+      <a href="mailto:priyankakapoor4202@gmail.com" class="contact-link primary">Email Me</a>
+      <a href="https://www.linkedin.com/in/priyanka-kapoor01/" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/PriyankaKapoor4202" target="_blank" class="contact-link">GitHub</a>
+      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6669899" target="_blank" class="contact-link">Research Paper</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Priyanka Kapoor</strong> &nbsp;|&nbsp;
+  MS Business Analytics, Montclair State University 2026 &nbsp;|&nbsp;
+  <a href="mailto:priyankakapoor4202@gmail.com">priyankakapoor4202@gmail.com</a>
+</footer>
+
 </body>
 </html>
