@@ -236,6 +236,19 @@
     .contact-link.main { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
     .contact-link.main:hover { background: #7c3aed; }
 
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .spill {
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 0.75rem; color: var(--text-2); font-weight: 500;
+      cursor: default; transition: all 0.2s;
+    }
+    .spill:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent-border);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
     footer { background: #111; padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; font-size: 0.7rem; color: #444; }
     footer a { color: #444; text-decoration: none; }
     footer a:hover { color: #c084fc; }
@@ -505,35 +518,51 @@
       <div class="skills-grid">
         <div class="skill-card reveal">
           <div class="skill-card-title">AI and Agents</div>
-          <div class="skill-bar-wrap"><div class="skill-name">Claude API <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Groq API <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">LangChain <span>Advanced</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Prompt Engineering <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">MCP <span>Advanced</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div></div>
+          <div class="skill-pills">
+            <span class="spill">Claude API</span>
+            <span class="spill">Groq API</span>
+            <span class="spill">LangChain</span>
+            <span class="spill">Prompt Engineering</span>
+            <span class="spill">MCP</span>
+            <span class="spill">RAG</span>
+            <span class="spill">LLaMA3</span>
+          </div>
         </div>
         <div class="skill-card reveal d1">
           <div class="skill-card-title">Data and Analytics</div>
-          <div class="skill-bar-wrap"><div class="skill-name">SQL <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Python <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Pandas <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Scikit-learn <span>Advanced</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">R <span>Intermediate</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div></div>
+          <div class="skill-pills">
+            <span class="spill">SQL</span>
+            <span class="spill">Python</span>
+            <span class="spill">R</span>
+            <span class="spill">Pandas</span>
+            <span class="spill">NumPy</span>
+            <span class="spill">Scikit-learn</span>
+            <span class="spill">XGBoost</span>
+            <span class="spill">Statistics</span>
+          </div>
         </div>
         <div class="skill-card reveal d2">
           <div class="skill-card-title">Visualization</div>
-          <div class="skill-bar-wrap"><div class="skill-name">Tableau <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Power BI <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Streamlit <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Plotly <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">GA4 <span>Advanced</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div></div>
+          <div class="skill-pills">
+            <span class="spill">Tableau</span>
+            <span class="spill">Power BI</span>
+            <span class="spill">Streamlit</span>
+            <span class="spill">Plotly</span>
+            <span class="spill">GA4</span>
+            <span class="spill">Looker</span>
+          </div>
         </div>
         <div class="skill-card reveal d3">
           <div class="skill-card-title">Engineering</div>
-          <div class="skill-bar-wrap"><div class="skill-name">ETL Pipelines <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Snowflake <span>Advanced</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Apache Airflow <span>Advanced</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Azure <span>Intermediate</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="72"></div></div></div>
-          <div class="skill-bar-wrap"><div class="skill-name">Power Automate <span>Expert</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
+          <div class="skill-pills">
+            <span class="spill">ETL Pipelines</span>
+            <span class="spill">Snowflake</span>
+            <span class="spill">Databricks</span>
+            <span class="spill">Apache Airflow</span>
+            <span class="spill">Azure</span>
+            <span class="spill">Power Automate</span>
+            <span class="spill">GitHub Actions</span>
+          </div>
         </div>
       </div>
     </div>
@@ -597,17 +626,7 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 reveals.forEach(r => obs.observe(r));
 
-// SKILL BARS
-const bars = document.querySelectorAll('.skill-bar-fill');
-const barObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.width = e.target.dataset.width + '%';
-      barObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-bars.forEach(b => barObs.observe(b));
+
 </script>
 </body>
 </html>
